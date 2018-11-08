@@ -1,0 +1,22 @@
+{   "quiz": [
+        {
+            "word": "apple",
+            "answerSrc": "apple.png",
+            "incorrectSrc": [
+                "dog.png",
+                "dog.png",
+                "dog.png"
+            ]
+        },
+        {
+            "word": "dog",
+            "answerSrc": "dog.png",
+            "incorrectSrc": [
+                "apple.png",
+                "apple.png",
+                "apple.png"
+            ]
+        }
+    ]
+
+}
