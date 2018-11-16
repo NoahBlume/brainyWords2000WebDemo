@@ -3,18 +3,38 @@
             "word": "apple",
             "answerSrc": "apple.png",
             "incorrectSrc": [
-                "dog.png",
-                "dog.png",
-                "dog.png"
+                "lemon.png",
+                "pear.png",
+                "strawberry.png"
             ]
         },
         {
-            "word": "dog",
-            "answerSrc": "dog.png",
+            "word": "banana",
+            "answerSrc": "banana.png",
+            "incorrectSrc": [
+                "pear.png",
+                "strawberry.png",
+                "orange.png"
+            ]
+        },
+
+        {
+            "word": "strawberry",
+            "answerSrc": "strawberry.png",
             "incorrectSrc": [
                 "apple.png",
+                "pear.png",
+                "orange.png"
+            ]
+        },
+
+        {
+            "word": "orange",
+            "answerSrc": "orange.png",
+            "incorrectSrc": [
+                "pear.png",
                 "apple.png",
-                "apple.png"
+                "lemon.png"
             ]
         }
     ]

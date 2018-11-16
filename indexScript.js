@@ -1,5 +1,45 @@
+var correctOnFirstTry = 0;
+var firstTry = true;
+var totalNumQuestions = 0;
+
+// Get the modal
+var modal = document.getElementById('myModal');
+// modal.style.display = "block";
+// var correctSound = $("#correct-sound");
+// var incorrectSound = $("#incorrect-sound").trigger('play');
+
 $( document ).ready(function() {
 
+
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    // btn.onclick = function() {
+    //     modal.style.display = "block";
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
+
+
+
+    var green = "#22bc00";
     var questions = {};
     var quizReady = false;
     questions['answerIndex'] = -1;
@@ -16,6 +56,7 @@ $( document ).ready(function() {
         questions['quiz'] = json.quiz;
 
         questions.numQuestions = questions.quiz.length;
+        totalNumQuestions = questions.numQuestions;
 
         SetupQuiz(questions);
         quizReady = true;
@@ -25,10 +66,15 @@ $( document ).ready(function() {
     $("#top-left").click(function() {
         if(quizReady == true) {
             if(questions.answerIndex == 0) {
-                alert("Correct!");
+                ResetColors();
+                $("#top-left").css('background-color', green);
+                // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                alert("Wrong Answer");
+                // alert("Wrong Answer");
+                $("#top-left").css('background-color', 'red');
+                firstTry = false;
+                $("#incorrect-sound").trigger('play');
             }
         }
     });
@@ -36,10 +82,15 @@ $( document ).ready(function() {
     $("#top-right").click(function() {
         if(quizReady == true) {
             if(questions.answerIndex == 1) {
-                alert("Correct!");
+                ResetColors();
+                $("#top-right").css('background-color', green);
+                // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                alert("Wrong Answer");
+                // alert("Wrong Answer");
+                $("#top-right").css('background-color', 'red');
+                firstTry = false;
+                $("#incorrect-sound").trigger('play');
             }
         }
     });
@@ -47,10 +98,15 @@ $( document ).ready(function() {
     $("#bottom-left").click(function() {
         if(quizReady == true) {
             if(questions.answerIndex == 2) {
-                alert("Correct!");
+                ResetColors();
+                $("#bottom-left").css('background-color', green);
+                // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                alert("Wrong Answer");
+                // alert("Wrong Answer");
+                $("#bottom-left").css('background-color', 'red');
+                firstTry = false;
+                $("#incorrect-sound").trigger('play');
             }
         }
     });
@@ -58,10 +114,15 @@ $( document ).ready(function() {
     $("#bottom-right").click(function() {
         if(quizReady == true) {
             if(questions.answerIndex == 3) {
-                alert("Correct!");
+                ResetColors();
+                $("#bottom-right").css('background-color', green);
+                // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                alert("Wrong Answer");
+                $("#bottom-right").css('background-color', 'red');
+                firstTry = false;
+                $("#incorrect-sound").trigger('play');
+                // alert("Wrong Answer");
             }
         }
     });
@@ -69,19 +130,39 @@ $( document ).ready(function() {
 
 });
 
+function ResetColors() {
+    $("#top-left").css('background-color', "");
+    $("#top-right").css('background-color', "");
+    $("#bottom-left").css('background-color', "");
+    $("#bottom-right").css('background-color', "");
+}
+
 function QuizComplete(questions) {
-    alert("You finished the quiz!");
+    // alert("You finished the quiz!");
+    $("#numRight").text(correctOnFirstTry + "/" + totalNumQuestions);
+    modal.style.display = "block";
 }
 
 function correctAnswer(questions) {
-    questions.curQuestion++;
+    var correctSound = $("#correct-sound").trigger('play');
 
+    setTimeout(function() {
+        if (firstTry) {
+            correctOnFirstTry++;
+        }
+        firstTry = true;
+        console.log("correct on first try " + correctOnFirstTry);
 
-    if(questions.numQuestions <= questions.curQuestion) {
-        QuizComplete(questions);
-    } else {
-        SetupQuiz(questions);
-    }
+        questions.curQuestion++;
+
+        ResetColors();
+
+        if(questions.numQuestions <= questions.curQuestion) {
+            QuizComplete(questions);
+        } else {
+            SetupQuiz(questions);
+        }
+    }, 500);
 
 }
 
