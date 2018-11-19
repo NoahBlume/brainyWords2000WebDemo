@@ -7,8 +7,9 @@
     <title>Brainy Words 2000</title>
 </head>
 <body>
-    <audio id="correct-sound" src="correct.wav" type="audio/wav"></audio>
-    <audio id="incorrect-sound" src="incorrect.wav" type="audio/wav"></audio>
+    <audio id="correct-sound" src="audio/correct.wav" type="audio/wav"></audio>
+    <audio id="incorrect-sound" src="audio/incorrect.wav" type="audio/wav"></audio>
+    <audio id="answer-audio" src="" type="audio/wav"></audio>
 
     <div id="top">
         <h2 align="center">Quiz</h2>
@@ -16,16 +17,33 @@
 
     <div id="myModal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content" id="myModal">
-            <div class="modal-header">
+        <div class="modal-content slim" id="myModal">
+            <div class="modal-header" style="text-align:center;">
                 <h2>Results</h2>
                 <span class="close">&times;</span>
             </div>
             <div class="modal-body">
                 <br/>
-                <h5 style="float: left; margin-right: 10px;">Correct on first try:</h5>
-                <h5 id="numRight"></h5>
+                <h5>Correct on first try:</h5>
+                <h2 id="numRight"></h2>
                 <br/>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Done</h3>
+            </div> -->
+        </div>
+    </div>
+
+    <div id="startModal" style="display:block;" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content slim">
+            <div class="modal-header" style="text-align:center;">
+                <h2 align="center" style="margin-right: auto; margin-left: auto;">Start Quiz</h2>
+            </div>
+            <div class="modal-body">
+                <br/>
+                <div class="play-button" id="begin-quiz">
+                </div>
                 <br/>
             </div>
             <!-- <div class="modal-footer">

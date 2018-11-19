@@ -1,3 +1,9 @@
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
 .rectangle {
   height: 250px;
 
@@ -125,6 +131,10 @@
     animation-name: animatetop;
     animation-duration: 0.6s
 }
+.slim {
+    width: 250px;
+    text-align: center;
+}
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
@@ -167,4 +177,31 @@
     /*color: white;*/
 }
 
+
+
+.play-button {
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 65px;
+    background-color: #006aff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.play-button:hover {
+    background-color: #3a8cff;
+}
+
+.play-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10.5px;
+    left: 24px;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 9.5px 0 9.5px 17px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+}
 

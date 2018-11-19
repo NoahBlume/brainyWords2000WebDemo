@@ -7,8 +7,25 @@ var modal = document.getElementById('myModal');
 // modal.style.display = "block";
 // var correctSound = $("#correct-sound");
 // var incorrectSound = $("#incorrect-sound").trigger('play');
+var startModal = document.getElementById('startModal');
+
+var green = "#22bc00";
+var questions = {};
+var quizReady = false;
+questions['answerIndex'] = -1;
+questions['numQuestions'] = -1;
+questions['curQuestion'] = 0;
+var firstQuestion = true;
 
 $( document ).ready(function() {
+
+    $("#begin-quiz").click(function() {
+        startModal.style.display = "none";
+
+        setTimeout(function() {
+            $("#answer-audio").trigger('play');
+        }, 500);
+    });
 
 
 
@@ -35,17 +52,6 @@ $( document ).ready(function() {
         }
     }
 
-
-
-
-
-    var green = "#22bc00";
-    var questions = {};
-    var quizReady = false;
-    questions['answerIndex'] = -1;
-    questions['numQuestions'] = -1;
-    questions['curQuestion'] = 0;
-
     $.ajaxSetup({
         scriptCharset: "utf-8",
         contentType: "application/json; charset=utf-8"
@@ -61,7 +67,6 @@ $( document ).ready(function() {
         SetupQuiz(questions);
         quizReady = true;
     });
-
 
     $("#top-left").click(function() {
         if(quizReady == true) {
@@ -144,7 +149,7 @@ function QuizComplete(questions) {
 }
 
 function correctAnswer(questions) {
-    var correctSound = $("#correct-sound").trigger('play');
+    $("#correct-sound").trigger('play');
 
     setTimeout(function() {
         if (firstTry) {
@@ -195,6 +200,18 @@ function SetupQuiz(questions) {
     $("#top-right").children(".option-image").attr("src", allSrcs[1]);
     $("#bottom-left").children(".option-image").attr("src", allSrcs[2]);
     $("#bottom-right").children(".option-image").attr("src", allSrcs[3]);
+
+
+    var audioFile = question.answerAudio;
+    $("#answer-audio").attr("src", audioFile);
+
+    if(!firstQuestion) {
+        setTimeout(function() {
+            $("#answer-audio").trigger('play');
+        }, 500);
+    } else {
+        firstQuestion = false;
+    }
 
     questions.answerIndex = answerIndex;
 }

@@ -2,6 +2,7 @@
         {
             "word": "apple",
             "answerSrc": "apple.png",
+            "answerAudio": "audio/apple.wav",
             "incorrectSrc": [
                 "lemon.png",
                 "pear.png",
@@ -11,6 +12,7 @@
         {
             "word": "banana",
             "answerSrc": "banana.png",
+            "answerAudio": "audio/banana.wav",
             "incorrectSrc": [
                 "pear.png",
                 "strawberry.png",
@@ -21,6 +23,7 @@
         {
             "word": "strawberry",
             "answerSrc": "strawberry.png",
+            "answerAudio": "audio/strawberry.wav",
             "incorrectSrc": [
                 "apple.png",
                 "pear.png",
@@ -29,12 +32,13 @@
         },
 
         {
-            "word": "orange",
-            "answerSrc": "orange.png",
+            "word": "lemon",
+            "answerSrc": "lemon.png",
+            "answerAudio": "audio/lemon.wav",
             "incorrectSrc": [
                 "pear.png",
-                "apple.png",
-                "lemon.png"
+                "orange.png",
+                "apple.png"
             ]
         }
     ]
